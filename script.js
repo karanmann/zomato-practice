@@ -26,8 +26,25 @@ fetch(zomatoApiUrlCuisine, apiKey)
   .then((data) => {
     console.log(data);
     data.restaurants.forEach((restaurantContainer) => {
-      console.log(restaurantContainer.restaurant.name);
+      const restaurantList = document.getElementById('restaurantList');
+      restaurantList.innerHTML += `
+      <section class="restaurants">
+        <div id="card-info">
+          <p>${restaurantContainer.restaurant.name}</p>
+          <p>${restaurantContainer.restaurant.user_rating.rating_text} ${restaurantContainer.restaurant.user_rating.aggregate_rating}</p>
+        </div>
+        <img id="image"src=${restaurantContainer.restaurant.featured_image}>
+        <div id="cost">
+          <p>Average cost (2 people):€${restaurantContainer.restaurant.average_cost_for_two}</p>
+        </div>
+        <div>
+          <p>Address: ${restaurantContainer.restaurant.location.address}</p>
+        </div>
+      </section>
+        
+      `;
     });
+
     
     //ITERATING OVER THE ARRAY WITH MAP 
 
@@ -36,3 +53,11 @@ fetch(zomatoApiUrlCuisine, apiKey)
     // );
     // console.log(testmap);
   });
+  // const forecast = document.getElementById('forecast');
+  // const forecastIcon = document.getElementById('forecastIcon');
+  // forecast.innerHTML = "";
+  // for (const date in minMaxTemps) { 
+  //     forecast.innerHTML += `<div class="column">${minMaxTemps[date].dayOfWeek}</div>`
+  //     forecast.innerHTML += `<img src="http://openweathermap.org/img/wn/${minMaxTemps[date].icon}@2x.png"></img>`
+  //     forecast.innerHTML += `<div class="column">${minMaxTemps[date].minTemp.toFixed(0)} °C | ${minMaxTemps[date].maxTemp.toFixed(0)} °C </div>`
+  // };

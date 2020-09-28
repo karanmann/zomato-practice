@@ -1,8 +1,33 @@
+body { 
+    width:100%;
+}
+
 h1 { 
 font-family: "didot";
 font-size: 50px;
+text-align: center;
 }
 
 .filter-forms { 
-    display: block;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 20px;
+
+}
+.restaurant-list { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.restaurants { 
+    flex-basis: 50%;
+}
+
+
+.restaurant-list img {
+    padding: 10px; 
+    width: 150px;
+    height: 100px;
 }
